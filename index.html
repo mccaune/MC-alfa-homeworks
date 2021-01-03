@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Kalendārs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="calendar">
+            <div class="generate">
+                <select class="selectYear"></select>
+                <select class="selectMonth"></select>
+                <input class="submit" type="button" onclick="submitTest()" value="Submit">
+                <button type="button" class="randomYear" onclick="randomYear()">Random</button>
+            </div>
+            <div class="month">
+                <ul>
+                    <li class="prev">&#10094;</li>
+                </ul>
+                <div class="date">
+                    <h1></h1>
+                    <p class="openedYear"></p>
+                    <p class="currentDate"></p>
+                </div>
+                <ul>
+                    <li class="next">&#10095;</li>
+                </ul>
+            </div>
+            <ul class="weekdays">
+                <li>P</li>
+                <li>O</li>
+                <li>T</li>
+                <li>C</li>
+                <li>P</li>
+                <li>Se</li>
+                <li>Sv</li>
+            </ul>
+            <div class="days"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
