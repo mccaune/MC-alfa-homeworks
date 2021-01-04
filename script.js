@@ -1,9 +1,8 @@
 //izveidojam date objektu
 const date = new Date();
-//console.log(date); //konsolē redzam tekošās dienas datumu
+//console.log(date);
 
 const currentYear = date.getFullYear();
-
 //console.log(currentYear);
 
 //const currentYear = date.setFullYear(2520, 0, 13)
@@ -11,35 +10,20 @@ const currentYear = date.getFullYear();
 
 
 const reloadCalendar = () => {
-    //const currentYear = date.getFullYear();
 
-
-    //iegūstam pilnu datumu mēneša pirmajai dienai.- "Date Tue Dec 01 2020"
     date.setDate(1);
     //console.log(date);
 
-    //nedēļas dienas atbilst array vērībām (P;O;O;T;C;P;Se;Sv) [0-6]
     const firstDayIndex = date.getDay();
-    //console.log(firstDayIndex) //iegūstam vērtību 2, jo 1.decembris ir otrdienā
-
-    //iezīmē .days klases elementu, ko vēlāk izmantos lai papildinātu ar reālajām mēneša dienām
     const monthDays = document.querySelector(".days");
-
-    //lastDay - iegūst tekošā mēneša garumu dienās
     const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-    //colsole.log(lastDay); //konsolē redzam tekošā mēneša pēdējo datumu un kas tā par dienu
-
-    //iegūst iepriekšējā mēneša pēdējās dienas vērtību. Svarīgi, lai saprastu kāda vertībai
+    //colsole.log(lastDay);
     const prevLastDay = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
-    //console.log(prevLastDay); //iegūstam vērtību 30, jo novembrī pēdējais datums bija 30
-
+    //console.log(prevLastDay);
     const lastDayIndex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
-
     const nextMonthDays = 7 - lastDayIndex;
     //console.log(nextMonthDays);
 
-
-    // Array ar visiem iespējamajiem mēnešiem, idexi no 0 līdz 11
     const months = [
         "Janvāris",
         "Februāris",
@@ -55,22 +39,16 @@ const reloadCalendar = () => {
         "Decembris",
     ];
 
-    //definē tikšu days array. tajā vēlāk pievieno visus kalendāra datumus un nosūta uz HTML
     let days = "";
 
-    //iezīmējam <h1></h1>, kas atrodas zem klases .date; tam piešķiram tekošā mēneša vērtību no months array izvēloties to, kas atbilst selektējot ar date.getMonth() metodi
     document.querySelector(".date h1").innerHTML = months[date.getMonth()];
-    //iezīmējam <p>, kas atrodas zem klases .date; tam piešķiram tekošā datuma vērtību, kas datumam kuru iegūst ar .toDateString metodi
     document.querySelector(".currentDate").innerHTML = new Date().toDateString();
-
     document.querySelector(".openedYear").innerHTML = date.getFullYear();
 
-    //FirstDayIndex ir 2, jo 1. decembris ir otrdiena. For cikla iterācija notiks 1 reizi, un kalendārā tiks pievienots viens datums no iepriekšējā mēneša, kas atradīsies pirmdienā. Tiek izveidots <div> elements ar papildus klasi - "prev-date"
     for (let x = firstDayIndex - 1; x > 0; x--) {
         days += `<div class="prev-date">${prevLastDay - x + 1}</div>`;
     }
 
-    //For cikls attēlo visas tekošās mēneša dienas (svarīgs ir skaits 30 vai 31) LastDay mainīgais glabā esošā mēneša dienu skaitu (28;30;31) iterācija attiecīgi arī notiek tik reižu, cik mēnesī dienu un tik dienas pievieno kalendārā. Tiek izveidots <div> elements bez papildus klases.
     for (let i = 1; i <= lastDay; i++) {
         if (
             i === new Date().getDate() &&
@@ -159,7 +137,7 @@ function submitTest() {
     }
 
 
-    // get selected option in sel (reference obtained above)
+
     var optYear = getSelectedYear(x);
     var optMonth = getSelectedMonth(x);
 
@@ -167,9 +145,6 @@ function submitTest() {
     month = Number(optMonth);
 
     date.setFullYear(year, month, 1);
-    // display its value and text
-    //console.log(opt.value);
-    //console.log(opt.text);
 }
 
 function randomYear() {
@@ -181,8 +156,6 @@ function randomYear() {
 
 document.querySelector(".submit").addEventListener("click", () => {
     submitTest();
-    //year = Number(opt.text);
-    //date.setFullYear(year, 0, 13);
     reloadCalendar();
 });
 

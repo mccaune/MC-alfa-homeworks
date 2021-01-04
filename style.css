@@ -72,6 +72,7 @@
         text-transform: uppercase;
         letter-spacing: 0.2rem;
         margin-bottom: 0.5rem;
+        text-shadow: 0 0.3rem 0.5rem rgba(80, 80, 80, 0.5);
     }
     
     .month h1 {
@@ -82,11 +83,13 @@
         text-transform: uppercase;
         letter-spacing: 0.2rem;
         margin-bottom: 0.5rem;
+        text-shadow: 0 0.3rem 0.5rem rgba(80, 80, 80, 0.5);
     }
     
     .month .currentDate {
         color: white;
         font-size: 1.4rem;
+        text-shadow: 0 0.3rem 0.5rem rgba(80, 80, 80, 0.5);
     }
     
     .month ul {
@@ -103,11 +106,13 @@
     .month .prev {
         float: left;
         padding-top: 10px;
+        text-shadow: 0 0.3rem 0.5rem rgba(80, 80, 80, 0.5);
     }
     
     .month .next {
         float: right;
         padding-top: 10px;
+        text-shadow: 0 0.3rem 0.5rem rgba(80, 80, 80, 0.5);
     }
     
     .date {
@@ -125,6 +130,7 @@
         width: 13.5%;
         color: #666;
         text-align: center;
+        text-shadow: 0 0.3rem 0.5rem rgba(80, 80, 80, 0.5);
     }
     
     .days {
