@@ -1,2 +1,2 @@
-# homework-calendar
-dynamic calendar with possibility to set date and navigate between months
+# MC-alfa_homeworks
+homework assignments from MC alfa web programming course
