@@ -1,0 +1,48 @@
+SQL mājasdarbs
+
+*******************
+1. uzdevums
+*******************
+
+SELECT 
+	 cl.language_id , l.language, COUNT(c.country_id) AS number_of_countries , SUM(cs.population) AS population
+FROM
+	nation.countries c 
+LEFT JOIN nation.country_languages cl ON cl.country_id = c.country_id 
+LEFT JOIN nation.languages l ON cl.language_id = l.language_id 
+LEFT JOIN nation.country_stats cs ON cs.country_id = c.country_id 
+WHERE cl.official = 1 AND (cs.year = 2018 OR cs.year is NULL)
+GROUP BY l.language_id 
+ORDER BY population DESC LIMIT 10;
+
+
+
+*******************
+2. uzdevums
+*******************
+
+CREATE TABLE countries_eastern_europe AS
+SELECT 
+	c.country_id , c.name, c.area , cs.population , cs.gdp ,r.name AS region, c2.name AS continent
+FROM 
+	nation.countries c 
+LEFT JOIN nation.regions r ON c.region_id = r.region_id 
+LEFT JOIN nation.continents c2 ON c2.continent_id = r.continent_id 
+LEFT JOIN nation.country_stats cs ON c.country_id = cs.country_id 
+WHERE r.region_id = 13 AND cs.year = 2018;
+
+
+
+*******************
+3. uzdevums
+*******************
+
+SELECT 
+	c.region_id ,r.name ,SUM(c.area) AS area, SUM(cs.population) AS population
+FROM
+	nation.countries c 
+LEFT JOIN nation.country_stats cs ON c.country_id = cs.country_id 
+LEFT JOIN nation.regions r ON r.region_id = c.region_id 
+WHERE cs.year = 2018 OR cs.year is NULL 
+GROUP BY r.region_id 
+ORDER BY population ASC
