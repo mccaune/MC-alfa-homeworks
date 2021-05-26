@@ -1,0 +1,71 @@
+{% extends 'app/base-bootstrap.html' %}
+{% block content %}
+            
+        <!-- <center>
+          <h1>{{continent.name}}</h1>
+          <a href="{% url 'list' %}" class="btn btn-primary btn-xl">Atcelt filtru</a>
+          <br/><br/>
+          <div class="css-table">
+            <div class="css-table-header">
+              <div>Valsts</div>
+              <div>Kods</div>
+              <div>Platība</div>
+              <div>Iedz. sk. (2018)</div>
+              <div>Reģions</div>
+              <div>Kontinents</div>
+            </div>
+            
+            <div class="css-table-body">
+              {% for c in countries %}
+                {% if c.region.continent.continent_id == continent.continent_id  %}
+                  <div class="css-table-row">
+                  <div><a href="{% url 'edit' c.country_id %}">{{c.name}}</a></div>
+                  <div>{{c.country_code2}}</div>
+                  <div>{{c.area|floatformat:0}}</div>
+                  <div>...</div>
+                  <div><a href="{% url 'list-region' c.region.region_id %}">{{c.region.name}}</a></div>
+                  <div><a href="{% url 'list-continent' c.region.continent.continent_id %}">{{c.region.continent.name}}</a></div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div> 
+        </center> -->
+
+
+
+        <center>
+          <h1>{{continent.name}}</h1>
+          <a href="{% url 'list' %}" class="btn btn-primary btn-xl">Atcelt filtru</a>
+          <br/><br/>
+          <div class="css-table">
+            <div class="css-table-header">
+              <div>Valsts</div>
+              <div>Kods</div>
+              <div>Platība</div>
+              <div>Iedz. sk. (2018)</div>
+              <div>Reģions</div>
+              <div>Kontinents</div>
+            </div>
+            
+            <div class="css-table-body">
+              {% for c in stats %}
+                {% if c.country.region.continent.continent_id == continent.continent_id  %}
+                  <div class="css-table-row">
+                  <div><a href="{% url 'edit' c.country.country_id %}">{{c.country.name}}</a></div>
+                  <div>{{c.country.country_code2}}</div>
+                  <div>{{c.country.area|floatformat:0}}</div>
+                  <div>{{c.population}}</div>
+                  <div><a href="{% url 'list-region' c.country.region.region_id %}">{{c.country.region.name}}</a></div>
+                  <div><a href="{% url 'list-continent' c.country.region.continent.continent_id %}">{{c.country.region.continent.name}}</a></div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div> 
+        </center>
+
+
+  
+
+{% endblock %}

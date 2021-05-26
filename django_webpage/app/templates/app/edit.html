@@ -1,0 +1,15 @@
+{% extends 'app/base-bootstrap.html' %}
+{% block content %}
+
+<center><br/><br/><br/>
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-primary btn-md" value="Saglabāt">
+            <a href="{% url 'list' %}" class="btn btn-primary btn-md">Atcelt</a>
+        </form>
+        </div>
+</center>
+
+{% endblock %}

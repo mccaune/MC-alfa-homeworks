@@ -5,12 +5,12 @@ db = mysql.connector.connect(
     host="localhost",
     user="root",
     passwd="root",
-    database="mc_alfa_pokemon"
+    database="pokemon"
 )
 
 mycursor = db.cursor()
 
-# mycursor.execute("DESCRIBE players")
+# mycursor.execute("DESCRIBE player_csv")
 # for x in mycursor:
 #     print(x)
 
@@ -218,3 +218,16 @@ for x in mycursor:
     
     
 """
+
+#getting total player count
+mycursor.execute("SELECT count(*) FROM player_csv")
+players_total = mycursor.fetchone()
+
+#assigning random pokemon to each player
+for x in range(players_total[0]+1):
+    sql_statement = "UPDATE player_csv SET pokemon_id = %s where player_id = %s"
+    data = (random.randint(1,800), x)
+    mycursor.execute(sql_statement, data)
+db.commit()
+
+
